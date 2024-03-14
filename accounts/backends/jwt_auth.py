@@ -1,4 +1,5 @@
 from rest_framework import authentication
+
 from accounts.functions import claim_token, validate_token
 from accounts.selectors import get_user
 

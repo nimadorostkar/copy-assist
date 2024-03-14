@@ -47,9 +47,6 @@ THIRD_PARTY_APPS = (
 
 LOCAL_APPS = (
     "accounts",
-    "podcast",
-    "feeling",
-    "reminder",
 )
 
 
@@ -93,15 +90,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "config.wsgi.application"
 
 
-#ACCOUNT_EMAIL_VERIFICATION = "none"
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'nnnn@nn.com' #sender's email-id
-EMAIL_HOST_PASSWORD = 'nnn22222aaaam' #password associated with above email-id
-
+ACCOUNT_EMAIL_VERIFICATION = "none"
 
 
 # Password validation
@@ -192,7 +181,6 @@ REFRESH_TTL = int(get_env("REFRESH_TTL", default="2"))  # days
 
 
 
-
 # REST FRAMEWORK CONFIGURATION
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -203,18 +191,47 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
 }
-
 # END REST FRAMEWORK CONFIGURATION
 
 MAX_UPLOAD_SIZE = 5242880
 
+
+
 # CORSHEADERS CONFIGURATION
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
-CORS_ALLOWED_ORIGINS = ["http://localhost", "http://127.0.0.1"]
-CSRF_TRUSTED_ORIGINS = ["http://localhost", "http://127.0.0.1"]
+ALLOWED_HOSTS = ['195.214.235.46','localhost','127.0.0.1','0.0.0.0', 'ieltsways.com']
+CORS_ALLOWED_ORIGINS = ["https://.ieltsways.com", "https://api.ieltsways.com", "http://195.214.235.46", "http://localhost", "http://127.0.0.1", "https://ieltsways.com", "https://ioc.ieltsways.com"]
+CSRF_TRUSTED_ORIGINS = ["https://.ieltsways.com", "https://api.ieltsways.com", "http://195.214.235.46", "http://localhost", "http://127.0.0.1", "https://ieltsways.com", "https://ioc.ieltsways.com"]
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_REPLACE_HTTPS_REFERER = True
 CORS_ALLOW_CREDENTIALS = True
+# END CORSHEADERS CONFIGURATION
+
+
+
+# SMS CONFIGURATION
+KAVENEGAR_API_KEY = "7572365451704156594870726D765276525A7468646D553857503161754D683669545A6D755748517658383D"
+KAVENEGAR_TEMPLATE = "otp-verify"
+# END SMS CONFIGURATION
 
 APPEND_SLASH = True
 
+
+# ZARRINPAL CONFIGURATION
+SANDBOX = True
+ZARRINPAL_URL="https://api.zarinpal.com/pg/"
+#ZARRINPAL_MERCHANT_ID = "a5e628f8-4d52-47c9-83f1-01cf80c2bb42"
+ZARRINPAL_MERCHANT_ID = "00000000-0000-0000-0000-000000000000"
+ZP_API_REQUEST = "https://sandbox.zarinpal.com/pg/rest/WebGate/PaymentRequest.json"
+ZP_API_VERIFY = "https://sandbox.zarinpal.com/pg/rest/WebGate/PaymentVerification.json"
+ZP_API_STARTPAY = "https://sandbox.zarinpal.com/pg/StartPay/"
+ZARIN_CALL_BACK = 'https://api.ieltsways.com/order/zarinpal-verify/'
+ZARIN_SPEAKING_CALL_BACK = 'https://api.ieltsways.com/order/zarinpal-speaking-verify/'
+ZARIN_WRITING_CALL_BACK = 'https://api.ieltsways.com/order/zarinpal-writing-verify/'
+# END ZARRINPAL CONFIGURATION
+
+
+
+# ZIBAL CONFIGURATION
+ZIBAL_MERCHANT_ID = "65a69be3c5d2cb0011fa9141"
+ZIBAL_CALL_BACK = 'https://api.ieltsways.com/order/payment-verify/'
+# END ZIBAL CONFIGURATION
